@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+		<title>VoteNex - A Voting App - Login.</title>
+		
+    
+    <!--Custom Theme files-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Intro information" />
+    
+    <link id="favicon" rel="icon" href="https://cdn.glitch.com/38e0359d-17f9-4e45-a1e2-f1dd5b87172e%2FVoteNexLogoTransperancyBIG2.png?1518171358033" type="image/x-icon">
+    
+    <link href="/css/guest.css" rel="stylesheet" type="text/css">
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/user.js"></script>
+	</head>
+
+	<body>
+    <div class="overlay"></div>
+    
+    <header class="header">
+      <div id="title">Welcome, <span id="display-name"></span>!</div>
+      
+      <div class="intro-container">
+        <a href="/logout"><button type="button" class="btn logout" >Logout</button></a>
+      </div>
+    </header>
+    
+    <div class="poll-buttons-container">
+        <button type="button" class="btn create" onclick="createPoll(this)">Create Poll</button>
+        <button type="button" class="btn mypolls" onclick="myPoll(this)">My Polls</button>
+        <button type="button" class="btn allpolls" onclick="allPolls(this)">All Polls</button>
+    </div>
+    <div id="content-title">
+       Available Polls
+    </div>
+    <div class="content">
+      Hello
+    </div>
+    
+	</body>
+  
+  <div id="form">
+    <div class="center">
+      <h1>Create Poll</h1>
+       <button id="x" class="create-btn" onclick="buttonPressed(this)">X</button>
+       <div id="interact-btns">
+        <button id="remove" class="create-btn" onclick="buttonPressed(this)">-</button>
+        <button id="add" class="create-btn" onclick="buttonPressed(this)">+</button>
+      </div>
+      <form id="create-form" action="/create" method="post">
+        <input class="form-input createinput" style="height: 30px;"  type="text" name="question" placeholder="What is your question?" required="">
+        <div id="form-content">
+          <input class="form-input createinput" type="text" name="choice1" id="choice1" placeholder="Choice 1" required="">
+          <input class="form-input createinput" type="text" name="choice2" id="choice2" placeholder="Choice 2" required="">
+        </div>
+        <div>
+          <input id="submit" class="form-input" type="submit" value="Create">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</html>
