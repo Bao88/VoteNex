@@ -8,11 +8,12 @@ html {
   background-position: top;  
   background-size: auto;
   background-repeat: no-repeat;
-/*   background-attachment: fixed; */
+  background-attachment: fixed;
   font-family: 'Courgette', cursive;
   margin: 0;
   padding: 0;
 }
+
 body {
 /*   position: absolute; */
   width: inherit;

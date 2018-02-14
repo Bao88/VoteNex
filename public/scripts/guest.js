@@ -4,6 +4,25 @@ window.onload = function(){
   loginForm = document.getElementsByClassName("login-form")[0];
   registerForm = document.getElementsByClassName("register-form")[0];
   overlay = document.getElementsByClassName("overlay")[0];
+  
+  fetch('/allpolls', {
+        method: "GET"
+    }).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      // console.log(data);
+      var content = document.getElementById("content");
+      content.innerHTML = "";
+      var element;
+      for(var i = 0; i < data.length; i++){
+        element = document.createElement("div");
+        element.setAttribute("id", data[i]._id);
+        element.setAttribute("onclick", "getPoll(this)");
+        element.innerHTML = data[i].poll[0];
+        content.appendChild(element);
+      }
+    });
+  // console.log("YOLO");
 }
 
 document.addEventListener("click", function (event) {
@@ -16,6 +35,19 @@ document.addEventListener("click", function (event) {
     for(var i = 0; i < 2; i++) document.getElementsByClassName("btn")[i].style.display = "initial";
   }
 });
+
+function getPoll(event){
+   // alert(event.id); 
+   fetch('/poll/'+event.id, {
+        method: "GET",
+        redirect: 'follow'
+    }).then(response => { 
+      console.log(response);
+     window.location = response.url;
+    }).catch(function(err) {
+      console.log(err + " url: " + event.id);
+    });
+}
 
 function buttonPressed(event) {
   var which = event.innerHTML;
