@@ -1,8 +1,5 @@
-
-Objective: Build a full stack JavaScript app that is functionally similar to this: https://fcc-voting-arthow4n.herokuapp.com/ and deploy it to Heroku.
-
-Note that for each project, you should create a new GitHub repository and a new Heroku project. If you can't remember how to do this, revisit https://freecodecamp.org/challenges/get-set-for-our-dynamic-web-application-projects.
-
+# VoteNex
+<iframe width="560" height="315" src="https://votenex.glitch.me/" frameborder="0" allowfullscreen></iframe>
 Here are the specific user stories you should implement for this project:
 
 User Story: As an authenticated user, I can keep my polls and come back later to access them.
@@ -21,6 +18,4 @@ User Story: As an unauthenticated or authenticated user, I can see the results o
 
 User Story: As an authenticated user, if I don't like the options on a poll, I can create a new option.
 
-Once you've finished implementing these user stories, click the "I've completed this challenge" button and enter the URLs for both your GitHub repository and your live app running on Heroku.
-
-You can get feedback on your project by sharing it with your friends on Facebook.
+# You can find the app <a href="https://votenex.glitch.me/">here</a>
