@@ -1,5 +1,5 @@
 # VoteNex
-<iframe width="560" height="315" src="https://votenex.glitch.me/" frameborder="0" allowfullscreen></iframe>
+
 Here are the specific user stories you should implement for this project:
 
 User Story: As an authenticated user, I can keep my polls and come back later to access them.
