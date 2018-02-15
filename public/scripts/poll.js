@@ -6,9 +6,10 @@ window.onload = function(){
   }).then(function(response) {
     return response.json();
   }).then(function(data) {
-    console.log(data);
+    console.log(data.name);
+    console.log(object.username);
     document.getElementById("display-name").innerHTML = data.name;
-    if(data.name === "Guest") document.getElementsByClassName("intro-container")[0].style.display = "none";
+    if(data.name === "Guest" || data.name !== object.username) document.getElementsByClassName("intro-container")[0].style.display = "none";
     else {
       var button = document.createElement("button");
       button.setAttribute("class", "btn create");
@@ -17,6 +18,12 @@ window.onload = function(){
       document.body.appendChild(button);
 
       createForm(object);
+      
+      var button = document.createElement("button");
+      button.setAttribute("class", "btn delete");
+      button.setAttribute("onclick", "removePoll(this)");
+      button.innerHTML = "Remove Poll";
+      document.getElementsByClassName("intro-container")[0].appendChild(button);
       
        //   Submit the modified form to server
       var submit = document.getElementById("create-form");
@@ -94,6 +101,28 @@ window.onload = function(){
       });
     }
   });
+}
+
+
+function removePoll(event){
+  var object = JSON.parse(document.getElementById("object").innerHTML);
+   fetch('/removepoll', {
+        body: JSON.stringify({id: object._id}),
+        method: "POST",
+        headers: {'Content-Type':'application/json'},
+        credentials: "include"      //Send with cookie so server knows we are a authenticated user
+      }).then(function(response) {
+        if(response.status === 201) return null;
+        return response.json();
+      }).then(function(response) {
+        if(response === null){
+          alert("Can't remove the poll!");
+        } else {
+          window.location.replace('https://votenex.glitch.me/');
+        }
+      }).catch(function(error) {
+          console.log("error" + error);
+    });
 }
 
 function createOptions(object){

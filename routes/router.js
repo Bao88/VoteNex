@@ -234,32 +234,7 @@ router.get("/poll/*", function ( req, res, next ) {
   });
 });
 
-
-// router.post("/poll/*", function ( req, res, next ) {
-//   var pollID = req.url.slice(6);
-//   // console.log(req.url);
-//   // console.log(pollID);
-//   Poll.findById(pollID).exec( function ( error, obj ) {
-//     if( error ) return next(error);
-//     else {
-//       res.status(200);
-//       return res.type("json").send(obj);
-//       // return res.sendFile("views/poll.html", {"root": "."}); 
-//     }
-//   });
-// });
-
 router.post("/modifypoll", function ( req, res , next ){
-  // console.log(req.body);
-// need to build up your update object programmatically.
-  // var update = {$push: {}}; 
-  // update.$inc['votes' + req.body.index] = 1;
-  // $push: {
-  //     scores: {
-  //        $each: [ ],
-  //        $slice: -3
-  //     }
-  //   }
   Poll.findByIdAndUpdate({_id :req.body.id, votes: req.body.index}, {$push: {
     votes: {
       $each: [],
@@ -272,31 +247,23 @@ router.post("/modifypoll", function ( req, res , next ){
     });  
 });
 
-router.post("/removepoll", function ( req, res , next ){
-  // console.log(req.body.index);
-// need to build up your update object programmatically.
+router.post("/updatepoll", function ( req, res , next ){
   var update = {$inc: {}}; 
   update.$inc['votes.' + req.body.index] = 1;
-  // findByIdAndRemove(id, callback
   Poll.findByIdAndUpdate({_id :req.body.id, votes: req.body.index}, update , { new: true}).exec(function ( err, data ){
     if (err) res.status(201).type("json").send({});
-      // console.log(data.votes);
       res.status(200);
       res.type("json").send(data);
     });  
 });
 
-router.post("/updatepoll", function ( req, res , next ){
-  // console.log(req.body.index);
-// need to build up your update object programmatically.
-  var update = {$inc: {}}; 
-  update.$inc['votes.' + req.body.index] = 1;
-  
-  Poll.findByIdAndUpdate({_id :req.body.id, votes: req.body.index}, update , { new: true}).exec(function ( err, data ){
+router.post("/removepoll", function ( req, res , next ){
+
+  Poll.findByIdAndRemove({_id :req.body.id}).exec(function ( err, data ){
     if (err) res.status(201).type("json").send({});
       // console.log(data.votes);
       res.status(200);
-      res.type("json").send(data);
+      res.type("json").send({status: "poll is removed"});
     });  
 });
 
