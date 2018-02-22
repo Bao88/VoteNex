@@ -6,7 +6,7 @@ html {
   height: 100%;
   background-image: url("https://cdn.glitch.com/38e0359d-17f9-4e45-a1e2-f1dd5b87172e%2FVoteNexLogoTransperancyBIG2.png?1518171358033"), linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
   background-position: top;  
-  background-size: auto;
+  background-size: 55%, cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: 'Courgette', cursive;
@@ -40,10 +40,12 @@ body {
 	font-weight: 500;
   font-family: inherit;
   outline: none;
-  margin-top: 250px;
+  margin-top: 300px;
   cursor: pointer;
 }
-
+.intro-container {
+  
+}
 .intro-container .btn:hover { 
   background-color: grey;
 }

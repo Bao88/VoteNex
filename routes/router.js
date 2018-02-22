@@ -6,17 +6,9 @@ var Poll = require("../models/poll");
 
 // GET route for reading data
 router.get('/', function (req, res, next) {
-  // console.log(typeof(req.session.userId) === "undefined");
-  // return res.sendFile('/views/login.html', {"root": "."});
-  // res.setHeader("User", "derp");
   if( typeof( req.session.userId ) === "undefined" ) return res.sendFile("views/login.html", {"root": "."}); 
   else return res.sendFile('/views/index.html', {"root": "."});
-  // else return res.redirect("https://votenex.glitch.me/poll/5a84342e013bb56136ba6ab8");
 });
-
-// router.get("/login/", function (req, res, next) {
-//  return res.sendFile('/views/login.html', {"root": "."});
-// });
 
 router.get("/guest/", function (req, res, next) {
  return res.sendFile("views/guest.html", {"root": "."}); 
@@ -49,7 +41,7 @@ router.post('/', function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/profile');
+        return res.redirect('/');
       }
     });
 
